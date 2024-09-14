@@ -1,0 +1,5 @@
+Code from:
+
+https://medium.com/@gautamaditee/hand-recognition-using-opencv-a7b109941c88
+
+
