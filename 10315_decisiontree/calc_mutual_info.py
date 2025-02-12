@@ -1,54 +1,7 @@
 import numpy as np
 
-data = [
-        [1, 1, 0, 0, 1, 1], 
-        [1, 1, 1, 0, 1, 1],
-        [0, 0, 1, 0, 0, 0],
-        [0, 1, 1, 0, 1, 0],
-        [0, 1, 1, 0, 0, 1], 
-        [0, 0, 1, 1, 1, 1],
-        [1, 0, 0, 0, 1, 0],
-        [0, 1, 0, 1, 1, 1], 
-        [0, 0, 1, 0, 1, 1],
-        [1, 0, 0, 0, 0, 0], 
-        [1, 1, 1, 0, 0, 1],
-        [0, 1, 1, 1, 1, 0],
-        [0, 0, 0, 0, 1, 0], 
-        [1, 0, 0, 1, 0, 1]]
-
-# data_pl = [
-#         [1, 0, 0, 1, 1], 
-#         [1, 1, 0, 1, 1],
-#         [0, 1, 0, 0, 0],
-#         [0, 1, 0, 1, 0],
-#         [0, 1, 0, 0, 1], 
-#         [0, 1, 1, 1, 1],
-#         [1, 0, 0, 1, 0],
-#         [0, 0, 1, 1, 1], 
-#         [0, 1, 0, 1, 1],
-#         [1, 0, 0, 0, 0], 
-#         [1, 1, 0, 0, 1],
-#         [0, 1, 1, 1, 0],
-#         [0, 0, 0, 1, 0], 
-#         [1, 0, 1, 0, 1]]
-
-data_pr = [
-        [1, 1, 0, 0, 1, 1], 
-        [1, 1, 1, 0, 1, 1],
-        [0, 1, 1, 0, 1, 0],
-        [0, 1, 1, 0, 0, 1], 
-        [0, 1, 0, 1, 1, 1], 
-        [1, 1, 1, 0, 0, 1],
-        [0, 1, 1, 1, 1, 0],]
-
-# data_pl= [
-#         [0, 0, 1, 0, 0, 0],
-#         [0, 0, 1, 1, 1, 1],
-#         [1, 0, 0, 0, 1, 0],
-#         [0, 0, 1, 0, 1, 1],
-#         [1, 0, 0, 0, 0, 0],
-#         [0, 0, 0, 0, 1, 0], 
-#         [1, 0, 0, 1, 0, 1]]
+data = [[0] for i in range(6)]
+data = data.append([[1]for i in range(24)])
 
 def pmf(Y, y, arr):
     return sum([1 for i in range(len(arr)) if arr[i][Y] == y]) / len(arr)
@@ -97,14 +50,40 @@ def conditional_entropy(Y, X, arr):
 def mutual_info(Y, X, arr):
     return entropy(Y, arr) - conditional_entropy(Y, X, arr)
 
-Y = 5
-for R in range(6):
-    print(f"Mutual info between {Y} and {R}: {mutual_info(Y, R, data)}")
+# print(entropy(0, data))
+# Y = 5
+# for R in range(6):
+#     print(f"Mutual info between {Y} and {R}: {mutual_info(Y, R, data)}")
 
-print("NODE 2\n\n")
+# print("NODE 2\n\n")
 
-Y = 5
-for R in range(6):
-    if R == 1:
-        continue
-    print(f"Mutual info between {Y} and {R}: {mutual_info(Y, R, data_pr)}")
+# Y = 5
+# for R in range(6):
+#     if R == 1:
+#         continue
+#     print(f"Mutual info between {Y} and {R}: {mutual_info(Y, R, data_pr)}")
+
+H_Y = -(1/5 * np.log2(1/5) + 4/5 * np.log2(4/5))
+print(H_Y)
+
+H_Y_A = 1/2 * (6/15 * np.log2(6/15) + 9/15*np.log2(9/15) + 0 + 1 * np.log2(1))
+print()
+print(H_Y_A)
+
+print()
+print(H_Y + H_Y_A)
+
+one = 1/4
+two = 3/4
+
+three = 0
+four = 1
+H_Y_B = 24/30*(one * np.log2(one) + two*np.log2(two)) + 6/30 * (0 + 1 * np.log2(1))
+
+
+print()
+print(H_Y_B)
+
+print()
+
+print(H_Y + H_Y_B)
